@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-world-service
+  namespace: demospace
+spec:
+  selector:
+    app: hello-world
+    type: front-end
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
