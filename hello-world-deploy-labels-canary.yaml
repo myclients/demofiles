@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: hello-world-deployment-canary
+  namespace: demospace
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: hello-world
+        type: front-end
+        channel: canary
+    spec:
+      containers:
+        - name: hello-world
+          image: 'quay.io/sir_rob/smsimplewebappdemo:v46'
+          ports:
+            - containerPort: 80
+              protocol: TCP
